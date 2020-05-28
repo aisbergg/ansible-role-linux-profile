@@ -1,0 +1,19 @@
+---
+- name: Install extra packages
+  tags: linux-profile
+  package:
+    name: "{{ linux_profile_packages }}"
+    state: present
+
+- include_tasks: profile.yml
+  tags: linux-profile
+  when:
+    - cfg is not none
+    - cfg | length > 0
+  vars:
+    path: "{{ profile.key }}"
+    cfg: "{{ profile.value }}"
+  loop: "{{ linux_profile | dict2items }}"
+  loop_control:
+    loop_var: profile
+    label: "{{ profile.key }}"

@@ -1,0 +1,6 @@
+---
+# list of extra packages to be installed
+linux_profile_packages: []
+
+# dictionary of files to copy
+linux_profile: {}

@@ -1,0 +1,40 @@
+---
+- name: Ensure '{{ path | dirname }}' dir exists
+  file:
+    path: "{{ path | dirname }}"
+    state: directory
+    mode: 0755
+
+- name: Create '{{ path }}' from content
+  copy:
+    content: "{{ cfg.content }}"
+    dest: "{{ path }}"
+    owner: "{{ cfg.owner | default(linux_profile_default_owner) | default(omit) }}"
+    group: "{{ cfg.group | default(linux_profile_default_group) | default(omit) }}"
+    mode: "{{ cfg.mode | default(linux_profile_default_mode) | default(omit) }}"
+  when:
+    - cfg.content is defined
+
+- name: Create '{{ path }}' from file
+  copy:
+    src: "{{ cfg.file }}"
+    dest: "{{ path }}"
+    owner: "{{ cfg.owner | default(linux_profile_default_owner) | default(omit) }}"
+    group: "{{ cfg.group | default(linux_profile_default_group) | default(omit) }}"
+    mode: "{{ cfg.mode | default(linux_profile_default_mode) | default(omit) }}"
+  when:
+    - cfg.content is not defined
+    - cfg.file is defined
+
+- name: Create '{{ path }}' from template
+  template:
+    src: "{{ cfg.template }}"
+    dest: "{{ path }}"
+    owner: "{{ cfg.owner | default(linux_profile_default_owner) | default(omit) }}"
+    group: "{{ cfg.group | default(linux_profile_default_group) | default(omit) }}"
+    mode: "{{ cfg.mode | default(linux_profile_default_mode) | default(omit) }}"
+    lstrip_blocks: true
+  when:
+    - cfg.content is not defined
+    - cfg.file is not defined
+    - cfg.template is defined
