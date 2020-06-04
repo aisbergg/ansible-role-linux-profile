@@ -16,10 +16,10 @@ None.
 | `linux_profile["/path/to/file"].content` |  | Content to copy into `/path/to/file`. |
 | `linux_profile["/path/to/file"].file` |  | File to copy to `/path/to/file`. |
 | `linux_profile["/path/to/file"].template` |  | Template file to create `/path/to/file`. |
-| `linux_profile["/path/to/file"].vars` |  | Extra variables to render the template. |
 | `linux_profile["/path/to/file"].owner` |  | Owner of the file. |
 | `linux_profile["/path/to/file"].group` |  | Group of the file. |
 | `linux_profile["/path/to/file"].mode` |  | Mode of the file. |
+| `linux_profile["/path/to/file"].state` | `present` | Whether the file/dir shall be `present` or `absent`. |
 | `linux_profile_default_owner` |  | Default for file owner. |
 | `linux_profile_default_group` |  | Default for file group. |
 | `linux_profile_default_mode` |  | Default for file mode. |
@@ -55,6 +55,10 @@ None.
       "/etc/zsh/zprofile":
         content: |
           emulate sh -c 'source /etc/profile'
+
+      # delete a file
+      "/etc/motd.d/cockpit":
+        state: absent
 
   roles:
     - aisbergg.linux-profile

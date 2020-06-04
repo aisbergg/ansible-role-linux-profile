@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2020-06-04
+### Added
+- Option to ensure a file or directory to be absent (delete it)
+
 ## [1.0.0] - 2020-05-28
 ### Added
 - First version of the role
