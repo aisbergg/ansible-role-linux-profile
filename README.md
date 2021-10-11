@@ -1,4 +1,4 @@
-# Ansible Role: `aisbergg.linux-profile`
+# Ansible Role: `aisbergg.linux_profile`
 
 The purpose of this Ansible role is to configure shell profiles like bashrc and such. The role doesn't come with any files or templates, you have to supply your own. As such the role acts simply as a helper to install your personal shell profiles on an Ansible controlled machine.
 
@@ -61,7 +61,7 @@ None.
         state: absent
 
   roles:
-    - aisbergg.linux-profile
+    - aisbergg.linux_profile
 ```
 
 ## License

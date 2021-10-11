@@ -4,7 +4,7 @@ dependencies: []
 galaxy_info:
   author: André Lehmann
   namespace: aisbergg
-  role_name: linux-profile
+  role_name: linux_profile
   description: Configure the shell profile, bashrc and such on Linux systems.
   company: none
   issue_tracker_url: https://github.com/aisbergg/ansible-role-linux-profile/issues
