@@ -1,11 +1,12 @@
 ---
-- name: Install extra packages
+- name: install extra packages
   tags: linux-profile
-  package:
+  ansible.builtin.package:
     name: "{{ linux_profile_packages }}"
     state: present
 
-- include_tasks: profile.yml
+- name: include profile tasks
+  ansible.builtin.include_tasks: profile.yml
   tags: linux-profile
   when:
     - cfg is not none
